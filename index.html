@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <link rel="stylesheet" href="./style.css">
+   <title>Player vs Monster</title>
+</head>
+
+<body>
+   <header>
+      <div id="socials" class="flex-row">
+      </div>
+
+      <div id="Player" class="flex-row">
+         <img src="./img/popto4.png" alt="to" id="to">
+         <h1>Player vs Monster</h1>
+         <img src="./img/monster.png" alt="Monster" id="monster" >
+      </div>
+   </header>
+
+   <div id="app" class="flex-column">
+      <div class="panel scores">
+         <div class="score flex-column">
+            <h2>Player</h2>
+            <div class="flex-column-size">{{playerLife}}HP</div>
+         </div>
+
+         <div class="score flex-column">
+            <h2>Monster</h2>
+            <div class="flex-column-size">{{monsterLife}}HP</div>
+         </div>
+      </div>
+
+      <div class="panel result" v-if="hasResult">
+         <div v-if="monsterLife == 0">Player WIN</div>
+
+         <div v-else> Monster WIN</div>
+      </div>
+
+      <div class="panel buttons flex-row">
+         <template v-if="hp">
+            <button class="btn red" @click="attack(false)">Attack</button>
+            <button class="btn yellow" @click="attackspecial(false)">Special Attack</button>
+         </template>
+
+         <button v-else @click="startGame" class="btn greenlime">STARTGAME</button>
+      </div>
+
+   </div>
+
+   <!--Import Script-->
+   <script src="./app.js"></script>
+</body>
+
+</html>
