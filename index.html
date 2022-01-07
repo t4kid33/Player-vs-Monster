@@ -10,46 +10,42 @@
 </head>
 
 <body>
-   <header>
-      <div id="socials" class="flex-row">
-      </div>
-
-      <div id="Player" class="flex-row">
-         <img src="./img/popto4.png" alt="to" id="to">
+   <header> 
          <h1>Player vs Monster</h1>
-         <img src="./img/monster.png" alt="Monster" id="monster" >
-      </div>
    </header>
 
    <div id="app" class="flex-column">
-      <div class="panel scores">
+      <div class="scores">
          <div class="score flex-column">
             <h2>Player</h2>
+            <img src="./img/popto4.png" alt="to" id="to" v-bind:style="{height: this.playerLife + 'px'}">
             <div class="flex-column-size">{{playerLife}}HP</div>
          </div>
 
          <div class="score flex-column">
             <h2>Monster</h2>
+            <img src="./img/monster.png" alt="Monster" id="monster" v-bind:style="{height: this.monsterLife + 'px'}">
             <div class="flex-column-size">{{monsterLife}}HP</div>
          </div>
       </div>
 
-      <div class="panel result" v-if="hasResult">
+      <div class="result" v-if="hasResult">
          <div v-if="monsterLife == 0">Player WIN</div>
 
          <div v-else> Monster WIN</div>
       </div>
 
-      <div class="panel buttons flex-row">
+      <div class="buttons flex-row">
          <template v-if="hp">
             <button class="btn red" @click="attack(false)">Attack</button>
             <button class="btn yellow" @click="attackspecial(false)">Special Attack</button>
          </template>
 
-         <button v-else @click="startGame" class="btn greenlime">STARTGAME</button>
+         <button v-else @click="startGame" class="btn green">STARTGAME</button>
       </div>
 
    </div>
+   
 
  <!--Import Script-->
    <script src="./app.js"></script>
